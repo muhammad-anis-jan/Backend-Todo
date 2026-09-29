@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import axios from "axios";
 import NoteCard from "../components/NoteCard";
+import NotesNotFound from "../components/NotesNotFound";
 
 const HomePage = () => {
   // 🔴 CHANGE 1: undefined ki jagah false
@@ -46,12 +47,14 @@ const HomePage = () => {
           </div>
         )}
 
+        {notes.length === 0 && !isRateLimited && <NotesNotFound/>}
+
         {!loading && notes.length > 0 && !isRateLimited && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
             {notes.map((note) => (
               // 🔴 CHANGE 6: key add ki
-             <NoteCard key={note._id} note={note}/>
+             <NoteCard key={note._id} note={note} setNotes={setNotes}/>
             ))}
 
           </div>

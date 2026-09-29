@@ -3,13 +3,15 @@ import notesRoute from "./routes/noteRoutes.js";
 import { connectdb } from "./config/db.js";
 import dotenv from "dotenv"
 import cors from "cors"
+import helmet from "helmet";
 
 dotenv.config()
 connectdb()
 
 const app = express();
-//middle ware
+app.use(helmet())
 app.use(cors())
+//middle ware 
 app.use(express.json())
 
 app.use("/api/notes", notesRoute);
