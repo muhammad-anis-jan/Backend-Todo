@@ -1,6 +1,6 @@
 // const Note = require("../models/Note.js")
 
-import Note from "../models/note.js";
+import Note from "../models/Note.js";
 
 console.log(Note);
 
