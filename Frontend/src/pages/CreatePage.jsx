@@ -8,6 +8,8 @@ import axios from "axios"; // ✅ FIX 1: axios import karna zaroori hai
 
 const CreatePage = () => {
 
+  const backendUrl = import.meta.env.VITE_BACKEND_URL
+
   // ❌ GHALTI:
   // const [title, setTitle] = useState();
   // const [content, setContent] = useState();
@@ -52,7 +54,7 @@ const CreatePage = () => {
       // ReferenceError: axios is not defined
 
       // ✅ Ab axios import ho chuka hai, isliye ye chalega.
-      await axios.post("http://localhost:5001/api/notes", {
+      await axios.post(`${backendUrl}notes`, {
         title,
         content,
       });

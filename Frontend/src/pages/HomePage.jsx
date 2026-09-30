@@ -6,6 +6,7 @@ import NoteCard from "../components/NoteCard";
 import NotesNotFound from "../components/NotesNotFound";
 
 const HomePage = () => {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL
   // 🔴 CHANGE 1: undefined ki jagah false
   const [isRateLimited, setIsRateLimited] = useState(false);
 
@@ -19,7 +20,7 @@ const HomePage = () => {
     const fetchData = async () => {
       try {
         // 🔴 CHANGE 4: URL ko simple string rakho
-        const res = await axios.get("http://localhost:5001/api/notes");
+        const res = await axios.get(`${backendUrl}notes`);
 
         console.log(res.data);
 

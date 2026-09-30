@@ -8,9 +8,16 @@ import helmet from "helmet";
 dotenv.config()
 connectdb()
 
+const frontendUrl = process.env.FRONTEND_URL
+
 const app = express();
 app.use(helmet())
-app.use(cors())
+app.use(cors(
+  {
+    origin : frontendUrl,
+    credentials : true
+  }
+))
 //middle ware 
 app.use(express.json())
 

@@ -6,6 +6,8 @@ import { formatDate } from "../lib/utils";
 import  axios  from "axios";
 import toast from "react-hot-toast";
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL
+
 const NoteCard = ({ note,setNotes }) => {
 
   const handleDelete = async(e , id) =>{
@@ -13,7 +15,7 @@ const NoteCard = ({ note,setNotes }) => {
       if(!window.confirm("are you sure that you wanna to delete this note"))return;
 
       try {
-        await axios.delete(`http://localhost:5001/api/notes/${id}`)
+        await axios.delete(`${backendUrl}notes/${id}`)
         setNotes((prev)=>prev.filter(note => note._id !== id))
         toast.success("Note delete Successfully!")
       } catch (error) {
